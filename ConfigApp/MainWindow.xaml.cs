@@ -19,6 +19,7 @@ namespace ConfigApp
         private OptionsFile m_configFile = new OptionsFile("config.ini");
         private OptionsFile m_twitchFile = new OptionsFile("twitch.ini");
         private OptionsFile m_effectsFile = new OptionsFile("effects.ini");
+        private OptionsFile m_multiplayerFile = new OptionsFile("multiplayer.ini");
 
         private Dictionary<EffectType, TreeMenuItem> m_treeMenuItemsMap;
         private Dictionary<EffectType, EffectData> m_effectDataMap;
@@ -50,6 +51,7 @@ namespace ConfigApp
 
             ParseConfigFile();
             ParseTwitchFile();
+            ParseMultiplayerFile();
 
             InitEffectsTreeView();
 
@@ -361,6 +363,21 @@ namespace ConfigApp
             
         }
 
+        private void ParseMultiplayerFile()
+        {
+            m_multiplayerFile.ReadFile();
+            multiplayer_client_enable.IsChecked = m_multiplayerFile.ReadValueBool("EnableMultiplayerClient", false);
+            multiplayer_server_enable.IsChecked = m_multiplayerFile.ReadValueBool("EnableMultiplayerServer", false);
+        }
+
+        private void WriteMultiplayerFile()
+        {
+            m_multiplayerFile.WriteValue("EnableMultiplayerClient", multiplayer_client_enable.IsChecked.Value);
+            m_multiplayerFile.WriteValue("EnableMultiplayerServer", multiplayer_server_enable.IsChecked.Value);
+
+            m_multiplayerFile.WriteFile();
+        }
+
         void InitTwitchTab()
         {
             TwitchTabHandleAgreed();
@@ -408,10 +425,12 @@ namespace ConfigApp
             WriteConfigFile();
             WriteTwitchFile();
             WriteEffectsFile();
+            WriteMultiplayerFile();
 
             // Reload saved config to show the "new" (saved) settings
             ParseConfigFile();
             ParseTwitchFile();
+            ParseMultiplayerFile();
 
             MessageBox.Show("Saved config!\nMake sure to press CTRL + L in-game twice if mod is already running to reload the config.", "ChaosModV", MessageBoxButton.OK, MessageBoxImage.Information);
         }

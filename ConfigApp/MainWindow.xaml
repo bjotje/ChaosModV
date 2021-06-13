@@ -309,7 +309,58 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                
+
+                <TabItem x:Name="multiplayer_tab" Header="Multiplayer" Background="#FFF0F0F0" BorderBrush="LightGray">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                            <RowDefinition Height="180" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="This feature allows multiplayer chaosmod (FiveM)."
+                                   Grid.Row="0"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="340" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="400" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="45" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Label x:Name="multiplayer_client_label" Content="Enable multiplayer client" Grid.Row="0" Grid.Column="0"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <CheckBox x:Name="multiplayer_client_enable" Width="60" Height="20" Grid.Row="0" Grid.Column="1"
+                                      HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <Label x:Name="multiplayer_client_disable_meta" Content="Please disable meta effects and timer bar!" Grid.Row="0" Grid.Column="2"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                            <Label x:Name="multiplayer_server_label" Content="Enable multiplayer server" Grid.Row="1" Grid.Column="0"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <CheckBox x:Name="multiplayer_server_enable" Width="60" Height="20" Grid.Row="1" Grid.Column="1"
+                                      HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
                 <TabItem x:Name="more_tab" Header="More" Background="#FFF0F0F0" BorderBrush="LightGray">
                     <Grid>
                         <Grid.ColumnDefinitions>

@@ -12,6 +12,7 @@
 #include "Components/Failsafe.h"
 #include "Components/TwitchVoting.h"
 #include "Components/SplashTexts.h"
+#include "Components/MultiplayerClient.h"
 
 #include "Effects/EffectIdentifier.h"
 #include "Effects/EEffectTimedType.h"

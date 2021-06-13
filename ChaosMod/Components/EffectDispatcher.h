@@ -7,6 +7,7 @@
 #include "Effects/EffectData.h"
 #include "Effects/EffectIdentifier.h"
 #include "Effects/EnabledEffectsMap.h"
+#include "MultiplayerClient.h"
 
 #include <vector>
 #include <array>
@@ -124,6 +125,7 @@ public:
 
 	void OverrideEffectName(EEffectType eEffectType, const std::string& szOverrideName);
 	void OverrideEffectName(EEffectType eEffectType, EEffectType eFakeEffectType);
+	void OverrideenableNormalEffectDispatch(bool state);
 };
 
 inline std::unique_ptr<EffectDispatcher> g_pEffectDispatcher;

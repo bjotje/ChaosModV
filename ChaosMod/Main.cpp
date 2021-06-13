@@ -53,6 +53,8 @@ static void Reset()
 
 	ms_pTwitchVoting.reset();
 
+	g_multiplayerClient.reset();
+
 	ms_pFailsafe.reset();
 
 	ClearEntityPool();
@@ -128,6 +130,9 @@ static void Init()
 
 	LOG("Initializing Twitch voting");
 	ms_pTwitchVoting = std::make_unique<TwitchVoting>(rgTextColor);
+
+	LOG("Initializing ChaosMod Multiplayer Client!");
+	g_multiplayerClient = std::make_unique<MultiplayerClient>(rgTextColor);
 
 	LOG("Initializing Failsafe");
 	ms_pFailsafe = std::make_unique<Failsafe>();

@@ -7,12 +7,14 @@ class OptionsManager
 private:
 	OptionsFile m_ConfigFile{ "chaosmod/config.ini" };
 	OptionsFile m_TwitchFile{ "chaosmod/twitch.ini" };
+	OptionsFile m_multiplayerFile{ "chaosmod/multiplayer.ini" };
 
 public:
 	void Reset()
 	{
 		m_ConfigFile.Reset();
 		m_TwitchFile.Reset();
+		m_multiplayerFile.Reset();
 	}
 
 	template <typename T>
@@ -25,6 +27,12 @@ public:
 	inline T GetTwitchValue(const std::string& szKey, T defaultValue)
 	{
 		return GetOptionValue(m_TwitchFile, szKey, defaultValue);
+	}
+
+	template <typename T>
+	inline T GetMultiplayerValue(const std::string& key, T defaultValue)
+	{
+		return GetOptionValue(m_multiplayerFile, key, defaultValue);
 	}
 
 private:

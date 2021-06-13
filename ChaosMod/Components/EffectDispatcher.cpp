@@ -197,7 +197,7 @@ void EffectDispatcher::UpdateMetaEffects()
 					}
 				}
 
-				if (targetEffectIdentifier)
+				if (targetEffectIdentifier && !g_multiplayerClient->IsClientEnabled()) //&& !g_multiplayerClient->IsClientEnabled() is probably not needed as meta effects won't have any effects on clients				
 				{
 					DispatchEffect(*targetEffectIdentifier, "(Meta)");
 				}
@@ -593,4 +593,9 @@ void EffectDispatcher::OverrideEffectName(EEffectType eEffectType, EEffectType e
 			effect.m_szFakeName = fakeEffectInfo.Name;
 		}
 	}
+}
+
+void EffectDispatcher::OverrideenableNormalEffectDispatch(bool state)
+{
+	m_bEnableNormalEffectDispatch = state;
 }
