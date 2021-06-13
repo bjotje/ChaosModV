@@ -34,7 +34,7 @@ EffectDispatcher::~EffectDispatcher()
 void EffectDispatcher::Run()
 {
 	UpdateEffects();
-	//Test
+
 	if (!m_bPauseTimer)
 	{
 		if (!g_MetaInfo.m_bDisableChaos)
