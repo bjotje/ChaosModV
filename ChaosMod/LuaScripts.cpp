@@ -76,11 +76,11 @@ _LUAFUNC T Generate(const A&... args)
 class LuaScript
 {
 private:
-	const std::string m_szFileName;
+	std::string m_szFileName;
 	sol::state m_Lua;
 
 public:
-	LuaScript(const std::string& fileName, sol::state&& lua) : m_szFileName(fileName), m_Lua(std::move(lua))
+	LuaScript(const std::string& fileName, sol::state& lua) : m_szFileName(fileName), m_Lua(std::move(lua))
 	{
 
 	}
@@ -89,7 +89,16 @@ public:
 
 	LuaScript& operator=(const LuaScript&) = delete;
 
-	LuaScript(LuaScript&&) noexcept = default;
+	LuaScript(LuaScript&& script) noexcept : m_szFileName(std::move(script.m_szFileName)), m_Lua(std::move(script.m_Lua))
+	{
+
+	}
+
+	LuaScript& operator=(LuaScript&& script) noexcept
+	{
+		m_szFileName = std::move(script.m_szFileName);
+		m_Lua = std::move(script.m_Lua);
+	}
 
 	void Execute(const char* szFuncName) const
 	{
@@ -127,13 +136,21 @@ class LuaHolder
 {
 public:
 	void* m_pData = nullptr;
-	const sol::object m_Obj;
+	sol::object m_Obj;
 
 	LuaHolder() = default;
 
 	LuaHolder(const sol::object& obj) : m_Obj(obj)
 	{
+		
+	}
 
+	~LuaHolder()
+	{
+		if (m_Obj.valid())
+		{
+			m_Obj.abandon();
+		}
 	}
 
 	template <typename T>
@@ -312,14 +329,14 @@ namespace LuaScripts
 					{ return LuaInvoke(szFileName, lua, ullHash, eReturnType, args); };
 				lua["WAIT"] = WAIT;
 
-				lua["GetAllPeds"] = GetAllPeds;
+				lua["GetAllPeds"] = GetAllPedsArray;
 				lua["CreatePoolPed"] = CreatePoolPed;
 
-				lua["GetAllVehicles"] = GetAllVehs;
+				lua["GetAllVehicles"] = GetAllVehsArray;
 				lua["CreatePoolVehicle"] = CreatePoolVehicle;
 				lua["CreateTempVehicle"] = CreateTempVehicle;
 
-				lua["GetAllProps"] = GetAllProps;
+				lua["GetAllProps"] = GetAllPropsArray;
 				lua["CreatePoolProp"] = CreatePoolProp;
 
 				lua["GetAllWeapons"] = Memory::GetAllWeapons;
@@ -437,7 +454,7 @@ namespace LuaScripts
 									}
 								}
 
-								ms_dictRegisteredScripts.emplace(szScriptId, LuaScript(szFileName, std::move(lua)));
+								ms_dictRegisteredScripts.emplace(szScriptId, LuaScript(szFileName, lua));
 
 								g_EnabledEffects.emplace(szScriptId, effectData);
 
