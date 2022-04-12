@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchChatVotingProxy", "Tw
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{E8C71724-789E-46CF-82B9-8A9C0D964E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchOverlayConfig", "TwitchOverlayConfig\TwitchOverlayConfig.csproj", "{387AFFEC-A58C-42BC-A64A-3FC6D5855436}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncEffectProxy", "SyncEffectProxy\SyncEffectProxy.csproj", "{537BDBE2-F59D-4905-8948-CC4604687DF1}"
 EndProject
 Global
@@ -50,6 +48,14 @@ Global
 		{4765F6E3-B78C-4B76-BA30-AA5362862818}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4765F6E3-B78C-4B76-BA30-AA5362862818}.Release|x64.ActiveCfg = Release|Any CPU
 		{4765F6E3-B78C-4B76-BA30-AA5362862818}.Release|x64.Build.0 = Release|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Debug|x64.Build.0 = Debug|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Release|x64.ActiveCfg = Release|Any CPU
+		{537BDBE2-F59D-4905-8948-CC4604687DF1}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
